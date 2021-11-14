@@ -9,24 +9,24 @@ describe('TravelersRepo', () => {
     travelersData = new TravelersRepo(travelers);
   });
 
-  it.skip('should be a function', function() {
+  it('should be a function', function() {
     expect(TravelersRepo).to.be.a('function');
   });
 
-  it.skip('should be an instance of Travelers Repo', function() {
+  it('should be an instance of Travelers Repo', function() {
     expect(travelersData).to.be.an.instanceOf(TravelersRepo);
   });
 
-  it.skip('should contain all the data given', function() {
+  it('should contain all the data given', function() {
     expect(travelersData.data.length).to.equal(50);
   });
 
-  it.skip('should retrieve an individual traveler\s data by id', function() {
-    expect(travelersData.retrieveUserData(1)).to.deep.equal(travelers[1]);
-    expect(travelersData.retrieveUserData(10)).to.deep.equal(travelers[10]);
+  it('should retrieve an individual traveler\s data by id', function() {
+    expect(travelersData.retrieveUserData(1)).to.deep.equal(travelers.travelers[0]);
+    expect(travelersData.retrieveUserData(10)).to.deep.equal(travelers.travelers[9]);
   });
 
-  it.skip('should return undefined if there is no data for an individual', function() {
+  it('should return undefined if there is no data for an individual', function() {
     expect(travelersData.retrieveUserData(51)).to.equal(undefined);
   });
 });

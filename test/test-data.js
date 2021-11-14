@@ -249,6 +249,6 @@ const travelers = [{
   travelerType: "foodie"
 }];
 
-export {
+export default {
   travelers
-}
+};
