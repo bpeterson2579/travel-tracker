@@ -8,6 +8,10 @@ class TravelersRepo {
       return traveler.id === id;
     });
   };
+
+  returnRandomTraveler() {
+    return Math.floor(Math.random() * this.data.length);
+  };
 };
 
 module.exports = TravelersRepo;
