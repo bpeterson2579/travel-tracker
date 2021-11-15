@@ -1,6 +1,6 @@
 class TravelersRepo {
   constructor(travelersData) {
-    this.data = travelersData.travelers;
+    this.data = travelersData;
   };
 
   retrieveUserData(id) {
