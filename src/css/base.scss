@@ -1,6 +1,68 @@
-/* This is an example of how to import a partial scss file*/
 @import '_variables';
 
 body {
-  background: $primary-background;
+  // background: $primary-background;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: $trips-background;
+  color: $text-color;
+  font-size: 50px;
+  border-radius: $section-rounds;
+  margin-top: 50px;
+  padding: 10px;
+  width: 45vw;
+}
+
+.about-traveler {
+  border: $border;
+  margin-top: 50px;
+  background-color: $trips-background;
+  color: $text-color;
+  border-radius: $section-rounds;
+}
+
+.trips-information {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 55px;
+  width: 100vw;
+}
+
+.trips {
+  border: $border;
+  display: flex;
+  justify-content: center;
+  background-color: $trips-background;
+  color: $text-color;
+  border-radius: $section-rounds;
+  width: 25vw;
+  height: 40vh;
+}
+
+.new-trip {
+  margin-top: 45px;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $trips-background;
+  color: $text-color;
+  border-radius: $section-rounds;
+}
+
+.new-trip-button {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
 }

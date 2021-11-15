@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Tracker</title>
+  </head>
+  <body>
+    <main>
+      <header class="welcome-traveler" id="welcomeTraveler">Welcome ${name}</header>
+      <section class="about-traveler" id="aboutTraveler">
+        <p class="traveler-info">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </section>
+      <section class="trips-information">
+        <section class="trips" id="pastTrips">
+          <h2>Past Trips</h2>
+          <p class="trip-list" id="past-trip-list"></p>
+        </section>
+        <section class="trips" id="upcomingTrips">
+          <h2>Upcoming Trips</h2>
+          <p class="trip-list" id="upcoming-trip-list"></p>
+        </section>
+        <section class="trips" id="pendingTrips">
+          <h2>Pending Trips</h2>
+          <p class="trip-list" id="pending-trip-list"></p>
+        </section>
+      </section>
+      <section class="new-trip" id="newTrip">
+        <button class="new-trip-button" id="newTripButton">Plan a new Trip!</button>
+        <form class="new-trip-form hidden">
+          <label for="start-date">Start Date</label>
+          <input type="text" id="startDate" name="start-date-entry" placeholder="yyyy/mm/dd" required>
+          <label for="return-date">Return Date</label>
+          <input type="text" id="returnDate" name="return-date-entry" placeholder="yyyy/mm/dd" required>
+          <label for="num-passengers">Number of Passengers</label>
+          <input type="number" min="1" id="numPassengers" name="number-of-passengers" required>
+          <!-- destinations -->
+          <button class="submit-trip-button" id="submitTripButton">Submit Trip Request</button>
+        </form>
+      </section>
+    </main>
+    <script src="bundle.js"></script>
+  </body>
 </html>
