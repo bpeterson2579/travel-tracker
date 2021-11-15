@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const TravelersRepo = require('../src/TravelersRepo.js');
-import travelers from './test-data.js';
+import {travelers} from './test-data.js';
 
 describe('TravelersRepo', () => {
   let travelersData;
@@ -22,8 +22,8 @@ describe('TravelersRepo', () => {
   });
 
   it('should retrieve an individual traveler\s data by id', function() {
-    expect(travelersData.retrieveUserData(1)).to.deep.equal(travelers.travelers[0]);
-    expect(travelersData.retrieveUserData(10)).to.deep.equal(travelers.travelers[9]);
+    expect(travelersData.retrieveUserData(1)).to.deep.equal(travelers[0]);
+    expect(travelersData.retrieveUserData(10)).to.deep.equal(travelers[9]);
   });
 
   it('should return undefined if there is no data for an individual', function() {
