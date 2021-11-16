@@ -14,17 +14,17 @@
         <p class="current-trip" id="currentTrip"></p>
       </section>
       <section class="trips-information">
-        <section class="trips" id="pastTrips">
+        <section class="trips">
           <h2>Past Trips</h2>
-          <p class="trip-list" id="past-trip-list"></p>
+          <p class="trip-list" id="pastTrips"></p>
         </section>
-        <section class="trips" id="upcomingTrips">
+        <section class="trips">
           <h2>Upcoming Trips</h2>
-          <p class="trip-list" id="upcoming-trip-list"></p>
+          <p class="trip-list" id="upcomingTrips"></p>
         </section>
-        <section class="trips" id="pendingTrips">
+        <section class="trips">
           <h2>Pending Trips</h2>
-          <p class="trip-list" id="pending-trip-list"></p>
+          <p class="trip-list" id="pendingTrips"></p>
         </section>
       </section>
       <section class="new-trip" id="newTrip">
@@ -33,7 +33,7 @@
           <label for="start-date">Start Date</label>
           <input type="text" id="startDate" name="start-date-entry" placeholder="yyyy/mm/dd" required>
           <label for="return-date">Return Date</label>
-          <input type="text" id="returnDate" name="return-date-entry" placeholder="yyyy/mm/dd" required>
+          <input type="number" id="duration" name="trip-duration"  required>
           <label for="num-passengers">Number of Passengers</label>
           <input type="number" min="1" id="numPassengers" name="number-of-passengers" required>
           <!-- destinations -->
