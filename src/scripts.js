@@ -9,8 +9,6 @@ import Destinations from './Destinations';
 import {fetchData, addData} from './api';
 import domUpdates from './domUpdates';
 
-let travelers;
-let trips;
 let traveler;
 
 const getData = () => {
@@ -19,11 +17,16 @@ const getData = () => {
 };
 
 const createTravelerDashboard = (data) => {
-  travelers = new TravelersRepo(data[0].travelers);
+  let travelers = new TravelersRepo(data[0].travelers);
   traveler = new Traveler(travelers.data[travelers.returnRandomTraveler()]);
-  trips = new Trips(data[1].trips);
-  traveler.findTrips(trips.retrieveTravelerTrips(traveler.id));
-  console.log(traveler.trips);
+  let trips = new Trips(data[1].trips);
+  let destinations = new Destinations(data[2].destinations);
+  traveler.findTrips(trips.data);
+  traveler.findDestinations(destinations.data);
+  traveler.findPastTrips();
+  domUpdates.renderDashboard(traveler);
 }
+
+
 
 window.addEventListener('load', getData);

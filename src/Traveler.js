@@ -5,6 +5,7 @@ class Traveler {
     this.travelerType = traveler.travelerType;
     this.trips = [];
     this.destinations = [];
+    this.pendingTrips = [];
     this.totalTripsCost = 0;
   };
 
@@ -39,6 +40,40 @@ class Traveler {
     }, 0);
     this.totalTripsCost = Math.floor(totalCost * 1.1);
   };
+
+  findUpcomingTrips() {
+    const futureTrip = this.trips.filter(trip => {
+      return trip.date > "2022/11/16";
+    }).map(trip => {
+      return trip.destinationID
+    })
+
+    const matchedDestination = this.destinations.filter(destination => {
+      return destination.id === futureTrip[0]
+    })
+
+    if(matchedDestination.length > 0) {
+      return `The ${this.travelerType} traveler has an upcoming trip to ${matchedDestination[0].destination}!`
+    }else {
+      return `It looks like the ${this.travelerType} doesn't have any upcoming trips.`;
+    }
+  }
+
+  findPastTrips() {
+    const pastTrips = this.trips.filter(trip => {
+      return trip.date < "2022/11/16";
+    }).map(trip => {
+      return trip.destinationID
+    });
+
+    const matchedDestinations = [];
+    this.destinations.forEach(destination => {
+      if(pastTrips.includes(destination.id)) {
+        matchedDestinations.push(destination);
+      }
+    })
+    return matchedDestinations;
+  }
 };
 
 module.exports = Traveler;
