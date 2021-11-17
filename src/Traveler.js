@@ -40,8 +40,16 @@ class Traveler {
   };
 
   updateTotalCost() {
+    const filteredTrips = this.trips.filter(trip => {
+      return trip.date > "2020/12/31" && trip.date < "2021/12/31";
+    })
+
     const totalCost = this.destinations.reduce((acc, destination) => {
-      acc += destination.estimatedFlightCostPerPerson + (destination.estimatedLodgingCostPerDay * this.trips.filter(trip => {
+      acc += (destination.estimatedFlightCostPerPerson * filteredTrips.filter(trip => {
+        return trip.destinationID === destination.id;
+      }).map(trip => {
+        return trip.travelers;
+      })) + (destination.estimatedLodgingCostPerDay * filteredTrips.filter(trip => {
         return trip.destinationID === destination.id;
       }).map(trip => {
         return trip.duration;
@@ -53,7 +61,7 @@ class Traveler {
 
   findUpcomingTrips() {
     const futureTrip = this.trips.filter(trip => {
-      return trip.date > "2022/11/16";
+      return trip.date > "2021/11/16";
     }).map(trip => {
       return trip.destinationID
     })
@@ -71,7 +79,7 @@ class Traveler {
 
   findPastTrips() {
     const pastTrips = this.trips.filter(trip => {
-      return trip.date < "2022/11/16";
+      return trip.date < "2021/11/16";
     }).map(trip => {
       return trip.destinationID
     });

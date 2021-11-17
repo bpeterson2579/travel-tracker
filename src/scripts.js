@@ -34,13 +34,14 @@ const grabData = () => {
 
 const createDataSet = (data) => {
   travelers = new TravelersRepo(data[0].travelers);
-  // traveler = new Traveler(travelers.data[travelers.returnRandomTraveler()]);
+  traveler = new Traveler(travelers.data[travelers.returnRandomTraveler()]);
   trips = new Trips(data[1].trips);
   destinations = new Destinations(data[2].destinations);
+  createTraveler(traveler.id);
 }
 
 const createTraveler = (id) => {
-  traveler = new Traveler(travelers.data[id - 1]);
+  // traveler = new Traveler(travelers.data[id - 1]);
   traveler.findTrips(trips.data);
   traveler.findDestinations(destinations.data);
   traveler.findPastTrips();
@@ -74,19 +75,19 @@ const updatePending = (dataObj) => {
   traveler.pendingTrips.push(dataObj)
 }
 
-const login = () => {
-  if(password.value === 'travel') {
-    domUpdates.show(mainScreen);
-    domUpdates.hide(loginBox);
-    const num = username.value.split('')
-    const id = Number(`${num[8]}${num[9]}`);
-    createTraveler(id)
-  }else {
-    err.innerText = 'Password is incorrect, try again.'
-  }
-}
+// const login = () => {
+//   if(password.value === 'travel') {
+//     domUpdates.show(mainScreen);
+//     domUpdates.hide(loginBox);
+//     const num = username.value.split('')
+//     const id = Number(`${num[8]}${num[9]}`);
+//     createTraveler(id)
+//   }else {
+//     err.innerText = 'Password is incorrect, try again.'
+//   }
+// }
 
-submitUserPass.addEventListener('click', login);
+// submitUserPass.addEventListener('click', login);
 submitTripButton.addEventListener('click', createTripRequest);
 newTripButton.addEventListener('click', domUpdates.showForm);
 window.addEventListener('load', grabData);

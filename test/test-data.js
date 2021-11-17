@@ -255,7 +255,7 @@ const tripsData = [
     userID: 1,
     destinationID: 1,
     travelers: 1,
-    date: "2022/09/16",
+    date: "2021/09/16",
     duration: 8,
     status: "approved",
     suggestedActivities: []
@@ -265,7 +265,7 @@ const tripsData = [
     userID: 2,
     destinationID: 2,
     travelers: 5,
-    date: "2022/10/04",
+    date: "2021/10/04",
     duration: 18,
     status: "approved",
     suggestedActivities: []
@@ -315,7 +315,7 @@ const tripsData = [
     userID: 1,
     destinationID: 7,
     travelers: 5,
-    date: "2022/5/28",
+    date: "2021/5/28",
     duration: 20,
     status: "approved",
     suggestedActivities: []
@@ -325,7 +325,7 @@ const tripsData = [
     userID: 2,
     destinationID: 8,
     travelers: 6,
-    date: "2022/02/07",
+    date: "2021/02/07",
     duration: 4,
     status: "approved",
     suggestedActivities: []
@@ -335,7 +335,7 @@ const tripsData = [
     userID: 3,
     destinationID: 9,
     travelers: 5,
-    date: "2022/12/19",
+    date: "2021/12/19",
     duration: 19,
     status: "approved",
     suggestedActivities: []
@@ -345,7 +345,7 @@ const tripsData = [
     userID: 1,
     destinationID: 10,
     travelers: 6,
-    date: "2022/07/23",
+    date: "2021/07/23",
     duration: 17,
     status: "approved",
     suggestedActivities: []
