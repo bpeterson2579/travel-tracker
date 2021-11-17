@@ -46,6 +46,7 @@ const createTraveler = (id) => {
   traveler.findDestinations(destinations.data);
   traveler.findPastTrips();
   domUpdates.renderDashboard(traveler);
+  domUpdates.renderPending(traveler, destinations)
 }
 
 const createTripRequest = () => {
@@ -61,14 +62,16 @@ const createTripRequest = () => {
       status: 'pending',
       suggestedActivities: [],
     }
-    addData(tripObj, 'trips')
-    .then(data => updatePending(data))
+    addData(tripObj)
+    .then(response => {domUpdates.renderPending(traveler, destinations, response)
+    traveler.pendingTrips.push(tripObj)
+    trips.data.push(tripObj)
+    // domUpdates.renderPending(traveler, destinations)
+  })
     .catch(err => console.log(err, "error"))
-    traveler.pendingTrips.push(tripObj);
-    traveler.pendingTrips.splice(traveler.pendingTrips.length, 1);
   }
   domUpdates.checkForm();
-  domUpdates.renderPending(traveler, destinations);
+  newTripForm.reset();
 }
 
 const updatePending = (dataObj) => {

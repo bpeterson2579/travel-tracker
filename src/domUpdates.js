@@ -41,12 +41,16 @@ const domUpdates = {
     }
   },
 
-  renderPending(user, destinations) {
-    const trips = destinations.data.filter(trip => {
-      return trip.id === user.pendingTrips[0].destinationID;
-    })
-    console.log(trips[0].destination);
-    pendingTrips.innerText = `Your trip to ${trips[0].destination} is pending.`;
+  renderPending(user, destinations, data) {
+    if(user.pendingTrips.length > 0) {
+      user.pendingTrips.forEach((pendingTrip) => {
+        destinations.data.forEach(destination => {
+          if(destination.id === pendingTrip.destinationID) {
+            pendingTrips.innerHTML += `<p>Your trip to ${destination.destination} is pending.</p>`;
+          }
+        })
+      })
+    }
   },
 
   resetForm() {
