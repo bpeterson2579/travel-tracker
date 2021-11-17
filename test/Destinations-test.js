@@ -35,7 +35,7 @@ describe('Destinations', () => {
       userID: 1,
       destinationID: 1,
       travelers: 1,
-      date: '2022/09/16',
+      date: '2021/09/16',
       duration: 8,
       status: 'approved',
       suggestedActivities: []

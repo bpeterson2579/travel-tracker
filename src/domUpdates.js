@@ -17,7 +17,7 @@ const domUpdates = {
   renderDashboard(user) {
     welcomeTraveler.innerText = `Welcome ${user.name}!`;
     user.updateTotalCost();
-    travelerType.innerText = `You have spent $${user.totalTripsCost} on vacations`
+    travelerType.innerText = `You have spent $${user.totalTripsCost} on vacations in the past year.`
     upcomingTrips.innerText = user.findUpcomingTrips();
     const pastVacations = user.findPastTrips();
     pastTrips.innerText += `You've been to: `

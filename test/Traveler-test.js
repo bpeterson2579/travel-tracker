@@ -63,7 +63,7 @@ describe('Traveler', () => {
         userID: 1,
         destinationID: 1,
         travelers: 1,
-        date: '2022/09/16',
+        date: '2021/09/16',
         duration: 8,
         status: 'approved',
         suggestedActivities: []
@@ -83,7 +83,7 @@ describe('Traveler', () => {
         userID: 1,
         destinationID: 7,
         travelers: 5,
-        date: '2022/5/28',
+        date: '2021/5/28',
         duration: 20,
         status: 'approved',
         suggestedActivities: []
@@ -93,7 +93,7 @@ describe('Traveler', () => {
         userID: 1,
         destinationID: 10,
         travelers: 6,
-        date: '2022/07/23',
+        date: '2021/07/23',
         duration: 17,
         status: 'approved',
         suggestedActivities: []
@@ -155,14 +155,15 @@ describe('Traveler', () => {
     traveler2.findDestinations(destinations);
     traveler2.updateTotalCost();
 
-    expect(traveler1.totalTripsCost).to.equal(6968);
-    expect(traveler2.totalTripsCost).to.equal(8173);
+    expect(traveler1.totalTripsCost).to.equal(5709);
+    expect(traveler2.totalTripsCost).to.equal(13420);
   });
 
   it('should find upcoming trips and inform the user what trip is coming up', function() {
     traveler1.findTrips(trips);
     traveler1.findDestinations(destinations);
-    expect(traveler1.findUpcomingTrips()).to.equal('The relaxer traveler has an upcoming trip to Paris, France!');
+
+    expect(traveler1.findUpcomingTrips()).to.equal('The relaxer traveler has an upcoming trip to Cartagena, Colombia!');
   });
 
   it('should notify user if no trips are coming up', function() {
@@ -172,8 +173,7 @@ describe('Traveler', () => {
   it('should find trips taken in the past and return them to the user', function() {
     traveler1.findTrips(trips);
     traveler1.findDestinations(destinations);
-    console.log(traveler1.findPastTrips()
-  )
+
     expect(traveler1.findPastTrips()).to.deep.equal([
       {
         id: 1,
@@ -182,14 +182,6 @@ describe('Traveler', () => {
         estimatedFlightCostPerPerson: 400,
         image: 'https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80',
         alt: 'overview of city buildings with a clear sky'
-      },
-      {
-        id: 4,
-        destination: 'Cartagena, Colombia',
-        estimatedLodgingCostPerDay: 65,
-        estimatedFlightCostPerPerson: 350,
-        image: 'https://images.unsplash.com/photo-1558029697-a7ed1a4b94c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-        alt: 'boats at a dock during the day time'
       },
       {
         id: 10,
