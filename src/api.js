@@ -3,8 +3,8 @@ const fetchData = (param) => {
     .then(response => response.json())
 };
 
-const addData = (object, property) => {
-  return fetch(`http://localhost:3001/api/v1/${property}`, {
+const addData = (object) => {
+  return fetch(`http://localhost:3001/api/v1/trips`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
