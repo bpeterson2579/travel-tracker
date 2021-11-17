@@ -10,7 +10,6 @@ const submitTripButton = document.getElementById('submitTripButton');
 const startDate = document.getElementById('startDate');
 const duration = document.getElementById('duration');
 const numPassengers = document.getElementById('numPassengers');
-// const tripList = document.getElementById('tripList');
 const completeForm = document.getElementById('completeForm');
 const needsCompletion = document.getElementById('needsCompletion');
 
