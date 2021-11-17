@@ -157,6 +157,47 @@ describe('Traveler', () => {
 
     expect(traveler1.totalTripsCost).to.equal(6968);
     expect(traveler2.totalTripsCost).to.equal(8173);
-    
+  });
+
+  it('should find upcoming trips and inform the user what trip is coming up', function() {
+    traveler1.findTrips(trips);
+    traveler1.findDestinations(destinations);
+    expect(traveler1.findUpcomingTrips()).to.equal('The relaxer traveler has an upcoming trip to Paris, France!');
+  });
+
+  it('should notify user if no trips are coming up', function() {
+    expect(traveler1.findUpcomingTrips()).to.equal('It looks like the relaxer doesn\'t have any upcoming trips.');
+  });
+
+  it('should find trips taken in the past and return them to the user', function() {
+    traveler1.findTrips(trips);
+    traveler1.findDestinations(destinations);
+    console.log(traveler1.findPastTrips()
+  )
+    expect(traveler1.findPastTrips()).to.deep.equal([
+      {
+        id: 1,
+        destination: 'Lima, Peru',
+        estimatedLodgingCostPerDay: 70,
+        estimatedFlightCostPerPerson: 400,
+        image: 'https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80',
+        alt: 'overview of city buildings with a clear sky'
+      },
+      {
+        id: 4,
+        destination: 'Cartagena, Colombia',
+        estimatedLodgingCostPerDay: 65,
+        estimatedFlightCostPerPerson: 350,
+        image: 'https://images.unsplash.com/photo-1558029697-a7ed1a4b94c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+        alt: 'boats at a dock during the day time'
+      },
+      {
+        id: 10,
+        destination: 'Toronto, Canada',
+        estimatedLodgingCostPerDay: 90,
+        estimatedFlightCostPerPerson: 450,
+        image: 'https://images.unsplash.com/photo-1535776142635-8fa180c46af7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2756&q=80'
+      }
+    ])
   });
 });

@@ -12,9 +12,19 @@ class Traveler {
   findTrips(data) {
     const matchingData = data.filter(trip => {
       return trip.userID === this.id;
+    })
+
+    matchingData.filter(trip => {
+      return trip.status === 'approved';
     }).forEach(trip => {
       this.trips.push(trip);
     });
+
+    matchingData.filter(trip => {
+      return trip.status === 'pending';
+    }).forEach(trip => {
+      this.pendingTrips.push(trip);
+    })
   };
 
   findDestinations(data) {
