@@ -42,6 +42,14 @@ const domUpdates = {
     }
   },
 
+  renderPending(user, destinations) {
+    const trips = destinations.data.filter(trip => {
+      return trip.id === user.pendingTrips[0].destinationID;
+    })
+    console.log(trips[0].destination);
+    pendingTrips.innerText = `Your trip to ${trips[0].destination} is pending.`;
+  },
+
   resetForm() {
     completeForm.innerText = '';
     domUpdates.show(newTripButton);
@@ -55,7 +63,5 @@ const domUpdates = {
     element.classList.add('hidden');
   },
 }
-
-
 
 export default domUpdates;

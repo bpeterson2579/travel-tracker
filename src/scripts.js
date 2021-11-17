@@ -19,6 +19,7 @@ const numPassengers = document.getElementById('numPassengers');
 
 let traveler;
 let trips;
+let destinations;
 
 const grabData = () => {
   Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
@@ -29,7 +30,7 @@ const createTravelerDashboard = (data) => {
   let travelers = new TravelersRepo(data[0].travelers);
   traveler = new Traveler(travelers.data[travelers.returnRandomTraveler()]);
   trips = new Trips(data[1].trips);
-  let destinations = new Destinations(data[2].destinations);
+  destinations = new Destinations(data[2].destinations);
   traveler.findTrips(trips.data);
   traveler.findDestinations(destinations.data);
   traveler.findPastTrips();
@@ -52,8 +53,11 @@ const createTripRequest = () => {
     addData(tripObj, 'trips')
     .then(data => updatePending(data))
     .catch(err => console.log(err, "error"))
+    traveler.pendingTrips.push(tripObj);
+    traveler.pendingTrips.splice(traveler.pendingTrips.length, 1);
   }
   domUpdates.checkForm();
+  domUpdates.renderPending(traveler, destinations);
 }
 
 const updatePending = (dataObj) => {
