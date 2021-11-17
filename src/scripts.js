@@ -9,9 +9,18 @@ import Destinations from './Destinations';
 import {fetchData, addData} from './api';
 import domUpdates from './domUpdates';
 
-let traveler;
+const newTripButton = document.getElementById('newTripButton');
+const newTripForm = document.querySelector('.new-trip-form');
+const submitTripButton = document.getElementById('submitTripButton');
+const startDate = document.getElementById('startDate');
+const duration = document.getElementById('duration');
+const numPassengers = document.getElementById('numPassengers');
+// const tripList = document.getElementById('tripList');
 
-const getData = () => {
+let traveler;
+let trips;
+
+const grabData = () => {
   Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
     .then(data => createTravelerDashboard(data))
 };
@@ -19,7 +28,7 @@ const getData = () => {
 const createTravelerDashboard = (data) => {
   let travelers = new TravelersRepo(data[0].travelers);
   traveler = new Traveler(travelers.data[travelers.returnRandomTraveler()]);
-  let trips = new Trips(data[1].trips);
+  trips = new Trips(data[1].trips);
   let destinations = new Destinations(data[2].destinations);
   traveler.findTrips(trips.data);
   traveler.findDestinations(destinations.data);
@@ -27,6 +36,30 @@ const createTravelerDashboard = (data) => {
   domUpdates.renderDashboard(traveler);
 }
 
+const createTripRequest = () => {
+  event.preventDefault();
+  if(startDate.value && duration.value && numPassengers.value) {
+    const tripObj = {
+      id: trips.data.length + 1,
+      userID: traveler.id,
+      destinationID: Number(tripList.value),
+      travelers: Number(numPassengers.value),
+      date: startDate.value,
+      duration: Number(duration.value),
+      status: 'pending',
+      suggestedActivities: [],
+    }
+    addData(tripObj, 'trips')
+    .then(data => updatePending(data))
+    .catch(err => console.log(err, "error"))
+  }
+  domUpdates.checkForm();
+}
 
+const updatePending = (dataObj) => {
+  traveler.pendingTrips.push(dataObj)
+}
 
-window.addEventListener('load', getData);
+submitTripButton.addEventListener('click', createTripRequest);
+newTripButton.addEventListener('click', domUpdates.showForm);
+window.addEventListener('load', grabData);
