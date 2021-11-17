@@ -2,6 +2,7 @@
 
 body {
   // background: $primary-background;
+  background-color: #41e089;
 }
 
 main {
@@ -11,6 +12,7 @@ main {
 }
 
 header {
+  border: $border;
   display: flex;
   justify-content: center;
   background-color: $trips-background;
@@ -61,11 +63,43 @@ header {
   background-color: $trips-background;
   color: $text-color;
   border-radius: $section-rounds;
+  border: $border;
 }
 
-.new-trip-button {
-  padding: 20px;
+.new-trip-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+button {
+  padding: 10px;
   cursor: pointer;
+  border-radius: $section-rounds;
+}
+
+button:hover {
+  transition: .5s ease-in-out;
+  transform: scale(1.1);
+}
+
+.start-date-entry {
+  width: 75px;
+}
+
+.trip-duration,
+.number-of-passengers {
+  width: 50px;
+}
+
+.submit-trip-button {
+  margin-top: 20px;
+  width: 150px;
+}
+
+.trip-list {
+  width: 150px;
 }
 
 .hidden {
